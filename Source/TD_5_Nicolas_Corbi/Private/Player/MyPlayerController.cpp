@@ -27,7 +27,10 @@ void AMyPlayerController::BeginPlay()
 
 	MyChara = Cast<AMyCharacter>(GetPawn());
 
-	DefaultMaxSpeed = MyChara->GetCharacterMovement()->MaxWalkSpeed;
+	if (MyChara && MyChara->GetCharacterMovement())
+	{
+		DefaultMaxSpeed = MyChara->GetCharacterMovement()->MaxWalkSpeed;
+	}
 
 	PlayerCameraManager->ViewPitchMin = -20;
 
