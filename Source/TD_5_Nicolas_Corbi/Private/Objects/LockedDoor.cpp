@@ -14,9 +14,13 @@ ALockedDoor::ALockedDoor()
 
 	Mesh->SetupAttachment(Root);
 
-	Light = CreateDefaultSubobject<UPointLightComponent>("Light");
+	FrontLight = CreateDefaultSubobject<UPointLightComponent>("Front Light");
 
-	Light->SetupAttachment(Mesh);
+	FrontLight->SetupAttachment(Mesh);
+
+	BackLight = CreateDefaultSubobject<UPointLightComponent>("Back Light");
+
+	BackLight->SetupAttachment(Mesh);
 
 	FirstConstraint = CreateDefaultSubobject<UPhysicsConstraintComponent>("First Constraint");
 
@@ -34,10 +38,14 @@ void ALockedDoor::BeginPlay()
 
 void ALockedDoor::OnPuzzleLock()
 {
-	Light->SetLightColor(LockedColor);
+	FrontLight->SetLightColor(LockedColor);
+
+	BackLight->SetLightColor(LockedColor);
 }
 
 void ALockedDoor::OnPuzzleComplete()
 {
-	Light->SetLightColor(CompleteColor);
+	FrontLight->SetLightColor(CompleteColor);
+
+	BackLight->SetLightColor(CompleteColor);
 }

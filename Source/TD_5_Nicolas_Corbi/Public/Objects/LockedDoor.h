@@ -31,7 +31,10 @@ protected:
 	TObjectPtr<class UPhysicsConstraintComponent> SecondConstraint = nullptr;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Components")
-	TObjectPtr<class UPointLightComponent> Light = nullptr;
+	TObjectPtr<class UPointLightComponent> FrontLight = nullptr;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Components")
+	TObjectPtr<class UPointLightComponent> BackLight = nullptr;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Settings")
 	FLinearColor LockedColor = FLinearColor(1, 0, 0);
