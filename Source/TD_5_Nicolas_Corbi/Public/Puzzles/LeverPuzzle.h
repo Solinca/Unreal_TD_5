@@ -10,7 +10,7 @@ class TD_5_NICOLAS_CORBI_API ALeverPuzzle : public ABasePuzzle
 	GENERATED_BODY()
 
 private:
-	bool HasBeenCompletedOnce = false;
+	bool HasBeenCompletedAlready = false;
 	
 protected:
 	ALeverPuzzle();

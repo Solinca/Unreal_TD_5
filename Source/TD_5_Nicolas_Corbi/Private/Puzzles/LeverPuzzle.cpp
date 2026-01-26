@@ -22,16 +22,16 @@ ALeverPuzzle::ALeverPuzzle()
 
 void ALeverPuzzle::CheckPuzzleCompletion(float DeltaTime)
 {
-	if (!HasBeenCompletedOnce && Mesh->GetComponentRotation().Yaw < 0)
+	if (!HasBeenCompletedAlready && Mesh->GetComponentRotation().Yaw < 0)
 	{
 		OnPuzzleComplete.Broadcast();
 
-		HasBeenCompletedOnce = true;
+		HasBeenCompletedAlready = true;
 	}
-	else if (HasBeenCompletedOnce && Mesh->GetComponentRotation().Yaw > 0)
+	else if (HasBeenCompletedAlready && Mesh->GetComponentRotation().Yaw > 0)
 	{
 		OnPuzzleLocked.Broadcast();
 
-		HasBeenCompletedOnce = false;
+		HasBeenCompletedAlready = false;
 	}
 }
