@@ -85,8 +85,10 @@ void AMyPlayerController::SprintEnd(const FInputActionValue& Value)
 
 void AMyPlayerController::InteractStart(const FInputActionValue& Value)
 {
+
 }
 
 void AMyPlayerController::InteractEnd(const FInputActionValue& Value)
 {
+
 }

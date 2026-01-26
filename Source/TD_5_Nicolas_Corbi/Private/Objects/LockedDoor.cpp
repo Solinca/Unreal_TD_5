@@ -1,4 +1,5 @@
 #include "Objects/LockedDoor.h"
+#include "Puzzles/BasePuzzle.h"
 #include "PhysicsEngine/PhysicsConstraintComponent.h"
 #include "Components/PointLightComponent.h"
 
@@ -34,18 +35,33 @@ ALockedDoor::ALockedDoor()
 void ALockedDoor::BeginPlay()
 {
 	Super::BeginPlay();
-}
 
-void ALockedDoor::OnPuzzleLock()
-{
-	FrontLight->SetLightColor(LockedColor);
+	if (Puzzle)
+	{
+		Puzzle->OnPuzzleComplete.AddDynamic(this, &ALockedDoor::OnPuzzleComplete);
 
-	BackLight->SetLightColor(LockedColor);
+		Puzzle->OnPuzzleLocked.AddDynamic(this, &ALockedDoor::OnPuzzleLocked);
+	}
 }
 
 void ALockedDoor::OnPuzzleComplete()
 {
 	FrontLight->SetLightColor(CompleteColor);
-
+		
 	BackLight->SetLightColor(CompleteColor);
+
+	FirstConstraint->SetAngularSwing1Limit(EAngularConstraintMotion::ACM_Limited, 90);
+
+	SecondConstraint->SetAngularSwing1Limit(EAngularConstraintMotion::ACM_Limited, 90);
+}
+
+void ALockedDoor::OnPuzzleLocked()
+{
+	FrontLight->SetLightColor(LockedColor);
+
+	BackLight->SetLightColor(LockedColor);
+
+	FirstConstraint->SetAngularSwing1Limit(EAngularConstraintMotion::ACM_Locked, 90);
+
+	SecondConstraint->SetAngularSwing1Limit(EAngularConstraintMotion::ACM_Locked, 90);
 }

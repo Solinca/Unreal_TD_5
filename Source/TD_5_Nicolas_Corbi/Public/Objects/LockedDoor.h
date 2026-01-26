@@ -11,10 +11,10 @@ class TD_5_NICOLAS_CORBI_API ALockedDoor : public AActor
 
 private:
 	UFUNCTION()
-	void OnPuzzleLock();
+	void OnPuzzleComplete();
 
 	UFUNCTION()
-	void OnPuzzleComplete();
+	void OnPuzzleLocked();
 	
 protected:
 	ALockedDoor();
@@ -35,6 +35,9 @@ protected:
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Components")
 	TObjectPtr<class UPointLightComponent> BackLight = nullptr;
+
+	UPROPERTY(EditAnywhere, Category = "Puzzle")
+	TObjectPtr<class ABasePuzzle> Puzzle = nullptr;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Settings")
 	FLinearColor LockedColor = FLinearColor(1, 0, 0);
