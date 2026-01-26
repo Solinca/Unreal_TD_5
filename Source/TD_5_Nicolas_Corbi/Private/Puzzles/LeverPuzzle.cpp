@@ -13,19 +13,25 @@ ALeverPuzzle::ALeverPuzzle()
 
 	Mesh = CreateDefaultSubobject<UStaticMeshComponent>("Lever");
 
-	Mesh->SetupAttachment(RootMesh);
+	Mesh->SetupAttachment(Root);
 
 	Constraint = CreateDefaultSubobject<UPhysicsConstraintComponent>("Constraint");
 
-	Constraint->SetupAttachment(RootMesh);
-}
-
-void ALeverPuzzle::BeginPlay()
-{
-	Super::BeginPlay();
+	Constraint->SetupAttachment(Root);
 }
 
 void ALeverPuzzle::CheckPuzzleCompletion(float DeltaTime)
 {
+	if (!HasBeenCompletedOnce && Mesh->GetComponentRotation().Yaw < 0)
+	{
+		OnPuzzleComplete.Broadcast();
 
+		HasBeenCompletedOnce = true;
+	}
+	else if (HasBeenCompletedOnce && Mesh->GetComponentRotation().Yaw > 0)
+	{
+		OnPuzzleLocked.Broadcast();
+
+		HasBeenCompletedOnce = false;
+	}
 }

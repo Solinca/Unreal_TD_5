@@ -8,11 +8,12 @@ UCLASS()
 class TD_5_NICOLAS_CORBI_API ALeverPuzzle : public ABasePuzzle
 {
 	GENERATED_BODY()
+
+private:
+	bool HasBeenCompletedOnce = false;
 	
 protected:
 	ALeverPuzzle();
-
-	virtual void BeginPlay() override;
 
 	virtual void CheckPuzzleCompletion(float DeltaTime) override;
 
