@@ -85,10 +85,10 @@ void AMyPlayerController::SprintEnd(const FInputActionValue& Value)
 
 void AMyPlayerController::InteractStart(const FInputActionValue& Value)
 {
-
+	MyChara->FetchFirstPhysicObjectOnSight();
 }
 
 void AMyPlayerController::InteractEnd(const FInputActionValue& Value)
 {
-
+	MyChara->ReleaseFetchedObject();
 }
