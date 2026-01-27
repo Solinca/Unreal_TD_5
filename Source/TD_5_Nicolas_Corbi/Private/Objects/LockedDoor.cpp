@@ -42,6 +42,8 @@ void ALockedDoor::BeginPlay()
 
 		Puzzle->OnPuzzleLocked.AddDynamic(this, &ALockedDoor::OnPuzzleLocked);
 	}
+
+	OnPuzzleLocked();
 }
 
 void ALockedDoor::OnPuzzleComplete()

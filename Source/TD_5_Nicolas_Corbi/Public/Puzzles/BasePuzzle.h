@@ -15,8 +15,6 @@ class TD_5_NICOLAS_CORBI_API ABasePuzzle : public AActor
 protected:
 	ABasePuzzle();
 
-	virtual void BeginPlay() override;
-
 	virtual void Tick(float DeltaTime) override;
 
 	virtual void CheckPuzzleCompletion(float DeltaTime) {};
