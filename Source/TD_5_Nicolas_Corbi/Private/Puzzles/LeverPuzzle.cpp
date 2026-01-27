@@ -15,6 +15,10 @@ ALeverPuzzle::ALeverPuzzle()
 
 	Mesh->SetupAttachment(Root);
 
+	Handle = CreateDefaultSubobject<UStaticMeshComponent>("Handle");
+
+	Handle->SetupAttachment(Mesh);
+
 	Constraint = CreateDefaultSubobject<UPhysicsConstraintComponent>("Constraint");
 
 	Constraint->SetupAttachment(Root);
@@ -34,4 +38,18 @@ void ALeverPuzzle::CheckPuzzleCompletion(float DeltaTime)
 
 		HasBeenCompletedAlready = false;
 	}
+}
+
+void ALeverPuzzle::OnFocusGained()
+{
+	Mesh->SetOverlayMaterial(OutlineMaterial);
+
+	Handle->SetOverlayMaterial(OutlineMaterial);
+}
+
+void ALeverPuzzle::OnFocusLost()
+{
+	Mesh->SetOverlayMaterial(nullptr);
+
+	Handle->SetOverlayMaterial(nullptr);
 }

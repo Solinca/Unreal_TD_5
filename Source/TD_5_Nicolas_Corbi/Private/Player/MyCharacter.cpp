@@ -2,6 +2,7 @@
 #include "Camera/CameraComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "PhysicsEngine/PhysicsHandleComponent.h"
+#include "Interfaces/Interactable.h"
 
 AMyCharacter::AMyCharacter()
 {
@@ -39,30 +40,41 @@ void AMyCharacter::Tick(float DeltaTime)
 
 	FVector End = GrabComponent->GetForwardVector() * MaxGrabDistance + Start;
 
-	DrawDebugLine(GetWorld(), Start, End, FColor::Red);
-
-	if (GetWorld()->LineTraceSingleByChannel(Hit, Start, End, ECC_Camera, Params))
+	if (GrabbedObjectComponent)
 	{
-		FocusedObject = Hit.GetComponent();
+		PhysicsHandle->SetTargetLocationAndRotation(End, GrabComponent->GetComponentRotation());
 	}
 	else
 	{
-		FocusedObject = nullptr;
-	}
+		if (FocusedObjectActor)
+		{
+			Cast<IInteractable>(FocusedObjectActor)->OnFocusLost();
+		}
 
-	if (GrabbedObject)
-	{
-		PhysicsHandle->SetTargetLocationAndRotation(End, GrabComponent->GetComponentRotation());
+		if (GetWorld()->LineTraceSingleByChannel(Hit, Start, End, ECC_Camera, Params) && Hit.GetActor()->Implements<UInteractable>())
+		{
+			FocusedObjectComponent = Hit.GetComponent();
+
+			FocusedObjectActor = Hit.GetActor();
+
+			Cast<IInteractable>(FocusedObjectActor)->OnFocusGained();
+		}
+		else
+		{
+			FocusedObjectActor = nullptr;
+
+			FocusedObjectComponent = nullptr;
+		}
 	}
 }
 
 void AMyCharacter::FetchFirstPhysicObjectOnSight()
 {
-	if (FocusedObject)
+	if (FocusedObjectComponent)
 	{
-		GrabbedObject = FocusedObject;
+		GrabbedObjectComponent = FocusedObjectComponent;
 
-		PhysicsHandle->GrabComponentAtLocation(GrabbedObject, "", GrabbedObject->GetComponentLocation());
+		PhysicsHandle->GrabComponentAtLocation(GrabbedObjectComponent, "", GrabbedObjectComponent->GetComponentLocation());
 	}
 }
 
@@ -70,5 +82,5 @@ void AMyCharacter::ReleaseFetchedObject()
 {
 	PhysicsHandle->ReleaseComponent();
 
-	GrabbedObject = nullptr;
+	GrabbedObjectComponent = nullptr;
 }
