@@ -7,11 +7,11 @@ AButtonPuzzle::AButtonPuzzle()
 
 	Root->SetupAttachment(RootComponent);
 
-	RootMesh = CreateDefaultSubobject<UStaticMeshComponent>("Root Mesh");
+	RootMesh = CreateDefaultSubobject<UStaticMeshComponent>("Base");
 
 	RootMesh->SetupAttachment(Root);
 
-	Mesh = CreateDefaultSubobject<UStaticMeshComponent>("Lever");
+	Mesh = CreateDefaultSubobject<UStaticMeshComponent>("Button");
 
 	Mesh->SetupAttachment(Root);
 
@@ -31,6 +31,10 @@ void AButtonPuzzle::CheckPuzzleCompletion(float DeltaTime)
 {
 	if (!HasBeenCompletedAlready && StartLocation.Z - Mesh->GetComponentLocation().Z > PressedDistanceToConsiderComplete)
 	{
+		OnPuzzleComplete.Broadcast();
+
+		HasBeenCompletedAlready = true;
+
 		GetWorld()->GetTimerManager().SetTimer(ResetPuzzleTimer, this, &AButtonPuzzle::ResetPuzzle, ResetPuzzleTimerCooldown, false);
 	}
 }
@@ -38,4 +42,6 @@ void AButtonPuzzle::CheckPuzzleCompletion(float DeltaTime)
 void AButtonPuzzle::ResetPuzzle()
 {
 	OnPuzzleLocked.Broadcast();
+
+	HasBeenCompletedAlready = false;
 }
