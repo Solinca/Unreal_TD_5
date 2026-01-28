@@ -10,11 +10,11 @@ class TD_5_NICOLAS_CORBI_API AMyCharacter : public ACharacter
 	GENERATED_BODY()
 
 private:
-	AActor* FocusedObjectActor = nullptr;
+	TWeakObjectPtr<AActor> FocusedObjectActor = nullptr;
 
-	UPrimitiveComponent* FocusedObjectComponent = nullptr;
+	TWeakObjectPtr<UPrimitiveComponent> FocusedObjectComponent = nullptr;
 
-	UPrimitiveComponent* GrabbedObjectComponent = nullptr;
+	TWeakObjectPtr<UPrimitiveComponent> GrabbedObjectComponent = nullptr;
 
 	FHitResult Hit;
 

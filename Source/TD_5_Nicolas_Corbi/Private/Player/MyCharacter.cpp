@@ -40,13 +40,13 @@ void AMyCharacter::Tick(float DeltaTime)
 
 	FVector End = GrabComponent->GetForwardVector() * MaxGrabDistance + Start;
 
-	if (GrabbedObjectComponent)
+	if (GrabbedObjectComponent.IsValid())
 	{
 		PhysicsHandle->SetTargetLocation(End);
 	}
 	else
 	{
-		if (FocusedObjectActor)
+		if (FocusedObjectActor.IsValid())
 		{
 			Cast<IInteractable>(FocusedObjectActor)->OnFocusLost();
 		}
@@ -70,11 +70,11 @@ void AMyCharacter::Tick(float DeltaTime)
 
 void AMyCharacter::FetchFirstPhysicObjectOnSight()
 {
-	if (FocusedObjectComponent)
+	if (FocusedObjectComponent.IsValid())
 	{
 		GrabbedObjectComponent = FocusedObjectComponent;
 
-		PhysicsHandle->GrabComponentAtLocation(GrabbedObjectComponent, "", GrabbedObjectComponent->GetComponentLocation());
+		PhysicsHandle->GrabComponentAtLocation(GrabbedObjectComponent.Get(), "", GrabbedObjectComponent->GetComponentLocation());
 	}
 }
 
