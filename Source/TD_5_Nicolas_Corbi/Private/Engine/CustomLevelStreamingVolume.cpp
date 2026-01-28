@@ -4,7 +4,7 @@
 
 ACustomLevelStreamingVolume::ACustomLevelStreamingVolume()
 {
-	PrimaryActorTick.bCanEverTick = true;
+	PrimaryActorTick.bCanEverTick = false;
 
 	Box = CreateDefaultSubobject<UBoxComponent>("Box");
 
