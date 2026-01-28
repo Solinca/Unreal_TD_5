@@ -42,7 +42,7 @@ void AMyCharacter::Tick(float DeltaTime)
 
 	if (GrabbedObjectComponent)
 	{
-		PhysicsHandle->SetTargetLocationAndRotation(End, GrabComponent->GetComponentRotation());
+		PhysicsHandle->SetTargetLocation(End);
 	}
 	else
 	{
