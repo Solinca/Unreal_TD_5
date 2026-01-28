@@ -9,6 +9,13 @@ AWeight::AWeight()
 	Mesh->SetupAttachment(RootComponent);
 }
 
+void AWeight::BeginPlay()
+{
+	Super::BeginPlay();
+
+	Mesh->SetMassOverrideInKg(NAME_None, WeightInKg, true);
+}
+
 void AWeight::OnFocusGained()
 {
 	Mesh->SetOverlayMaterial(OutlineMaterial);

@@ -13,6 +13,8 @@ class TD_5_NICOLAS_CORBI_API AWeight : public AActor, public IInteractable
 protected:
 	AWeight();
 
+	virtual void BeginPlay() override;
+
 	virtual void OnFocusGained() override;
 
 	virtual void OnFocusLost() override;
@@ -22,4 +24,10 @@ protected:
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Material")
 	TObjectPtr<UMaterialInstance> OutlineMaterial = nullptr;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Settings")
+	int WeightInKg = 0;
+
+public:
+	int GetWeightInKg() { return WeightInKg; };
 };
