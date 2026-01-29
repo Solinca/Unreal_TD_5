@@ -101,4 +101,7 @@ protected:
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "UI|Settings")
 	TObjectPtr<UWorld> LevelToLoadOnRestart = nullptr;
+
+public:
+	void OnGoalReached();
 };

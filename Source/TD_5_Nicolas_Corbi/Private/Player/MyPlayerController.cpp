@@ -147,3 +147,8 @@ void AMyPlayerController::OnQuitButtonClicked()
 {
 	UKismetSystemLibrary::QuitGame(GetWorld(), this, EQuitPreference::Quit, true);
 }
+
+void AMyPlayerController::OnGoalReached()
+{
+	DisableInput(this);
+}

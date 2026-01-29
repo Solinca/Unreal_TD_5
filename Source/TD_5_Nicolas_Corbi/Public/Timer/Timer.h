@@ -34,12 +34,30 @@ protected:
 
 	virtual void Tick(float DeltaTime) override;
 	
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Puzzles")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Puzzles")
 	TObjectPtr<class ABasePuzzle> FirstPuzzle = nullptr;
 
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Puzzles")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Puzzles")
 	TObjectPtr<class ABasePuzzle> SecondPuzzle = nullptr;
 
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Puzzles")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Puzzles")
 	TObjectPtr<class ABasePuzzle> ThridPuzzle = nullptr;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Texts")
+	TObjectPtr< class UTextRenderComponent> CongratulationText = nullptr;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Texts")
+	TObjectPtr< class UTextRenderComponent> FirstPuzzleTimerText = nullptr;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Texts")
+	TObjectPtr< class UTextRenderComponent> SecondPuzzleTimerText = nullptr;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Texts")
+	TObjectPtr< class UTextRenderComponent> ThirdPuzzleTimerText = nullptr;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Texts")
+	TObjectPtr< class UTextRenderComponent> LineText = nullptr;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Texts")
+	TObjectPtr< class UTextRenderComponent> GlobalTimerText = nullptr;
 };
