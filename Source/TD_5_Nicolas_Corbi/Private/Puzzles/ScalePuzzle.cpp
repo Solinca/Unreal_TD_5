@@ -27,12 +27,16 @@ void AScalePuzzle::BeginPlay()
 
 void AScalePuzzle::CheckPuzzleCompletion(float DeltaTime)
 {
-	if (FMath::IsNearlyEqual(InputBox->GetComponentLocation().Z, OutputWeight->GetComponentLocation().Z, 15))
+	if (!HasBeenCompletedAlready && FMath::IsNearlyEqual(InputBox->GetComponentLocation().Z, OutputWeight->GetComponentLocation().Z, 15))
 	{
 		OnPuzzleComplete.Broadcast();
+
+		HasBeenCompletedAlready = true;
 	}
-	else
+	else if (HasBeenCompletedAlready && !FMath::IsNearlyEqual(InputBox->GetComponentLocation().Z, OutputWeight->GetComponentLocation().Z, 15))
 	{
 		OnPuzzleLocked.Broadcast();
+
+		HasBeenCompletedAlready = false;
 	}
 }

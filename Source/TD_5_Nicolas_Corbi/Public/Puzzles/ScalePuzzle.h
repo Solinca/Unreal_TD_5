@@ -11,6 +11,8 @@ class TD_5_NICOLAS_CORBI_API AScalePuzzle : public ABasePuzzle
 
 private:
 	int InputWeightInKg = 0;
+
+	bool HasBeenCompletedAlready = false;
 	
 protected:
 	AScalePuzzle();

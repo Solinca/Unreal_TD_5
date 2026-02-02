@@ -2,6 +2,8 @@
 #include "Puzzles/BasePuzzle.h"
 #include "PhysicsEngine/PhysicsConstraintComponent.h"
 #include "Components/PointLightComponent.h"
+#include "Kismet/GameplayStatics.h"
+#include "Sound/SoundBase.h"
 
 ALockedDoor::ALockedDoor()
 {
@@ -55,6 +57,8 @@ void ALockedDoor::OnPuzzleComplete()
 	FirstConstraint->SetAngularSwing1Limit(EAngularConstraintMotion::ACM_Limited, 90);
 
 	SecondConstraint->SetAngularSwing1Limit(EAngularConstraintMotion::ACM_Limited, 90);
+
+	UGameplayStatics::SpawnSoundAtLocation(GetWorld(), UnlockedSound, GetActorLocation());
 }
 
 void ALockedDoor::OnPuzzleLocked()
@@ -66,4 +70,6 @@ void ALockedDoor::OnPuzzleLocked()
 	FirstConstraint->SetAngularSwing1Limit(EAngularConstraintMotion::ACM_Locked, 90);
 
 	SecondConstraint->SetAngularSwing1Limit(EAngularConstraintMotion::ACM_Locked, 90);
+
+	UGameplayStatics::SpawnSoundAtLocation(GetWorld(), LockedSound, GetActorLocation());
 }

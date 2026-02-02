@@ -39,6 +39,12 @@ protected:
 	UPROPERTY(EditAnywhere, Category = "Puzzle")
 	TObjectPtr<class ABasePuzzle> Puzzle = nullptr;
 
+	UPROPERTY(EditAnywhere, Category = "Sound")
+	TObjectPtr<class USoundBase> LockedSound = nullptr;
+
+	UPROPERTY(EditAnywhere, Category = "Sound")
+	TObjectPtr<class USoundBase> UnlockedSound = nullptr;
+
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Settings")
 	FLinearColor LockedColor = FLinearColor(1, 0, 0);
 
