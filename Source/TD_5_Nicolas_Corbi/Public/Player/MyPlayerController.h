@@ -100,7 +100,7 @@ protected:
 	TSubclassOf<class UPauseWidget> PauseWidgetClass = nullptr;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "UI|Settings")
-	TObjectPtr<UWorld> LevelToLoadOnRestart = nullptr;
+	FName LevelToLoadOnRestart;
 
 public:
 	void OnGoalReached();

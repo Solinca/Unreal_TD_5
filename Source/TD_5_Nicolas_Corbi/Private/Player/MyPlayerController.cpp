@@ -140,7 +140,7 @@ void AMyPlayerController::OnContinueButtonClicked()
 
 void AMyPlayerController::OnRestartButtonClicked()
 {
-	UGameplayStatics::OpenLevel(GetWorld(), LevelToLoadOnRestart->GetFName());
+	UGameplayStatics::OpenLevel(GetWorld(), LevelToLoadOnRestart);
 }
 
 void AMyPlayerController::OnQuitButtonClicked()

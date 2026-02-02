@@ -18,7 +18,7 @@ protected:
 	TObjectPtr<class UBoxComponent> Box = nullptr;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Settings")
-	TObjectPtr<UWorld> LevelToLoad = nullptr;
+	FName LevelToLoad;
 
 	UFUNCTION()
 	void OverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);

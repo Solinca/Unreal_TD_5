@@ -22,17 +22,11 @@ void ACustomLevelStreamingVolume::BeginPlay()
 
 void ACustomLevelStreamingVolume::OverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
-	if (LevelToLoad)
-	{
-		UGameplayStatics::LoadStreamLevel(GetWorld(), LevelToLoad->GetFName(), true, true, FLatentActionInfo{});
-	}
+	UGameplayStatics::LoadStreamLevel(GetWorld(), LevelToLoad, true, true, FLatentActionInfo{});
 }
 
 void ACustomLevelStreamingVolume::OverlapEnd(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
 {
-	if (LevelToLoad)
-	{
-		UGameplayStatics::UnloadStreamLevel(GetWorld(), LevelToLoad->GetFName(), FLatentActionInfo{}, true);
-	}
+	UGameplayStatics::UnloadStreamLevel(GetWorld(), LevelToLoad, FLatentActionInfo{}, true);
 }
 
