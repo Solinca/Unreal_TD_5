@@ -20,7 +20,7 @@ void AScalePuzzle::BeginPlay()
 {
 	Super::BeginPlay();
 
-	int DesiredWeight = FMath::RandRange(1, 20);
+	int DesiredWeight = FMath::RandRange(1, 10);
 
 	OutputWeight->SetMassOverrideInKg(NAME_None, DesiredWeight * 100, true);
 }
