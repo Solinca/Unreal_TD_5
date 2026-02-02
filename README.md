@@ -28,19 +28,19 @@ Simply put a weight on it to complete the puzzle.
 
 Another constraint between the button and the ground. The puzzle is considered complete for 2 seconds when the button is pressed.
 
-Simply roll a ball down the alley and wait before the door until the ball press the button.
+Simply roll a ball down the alley and wait before the door until the ball presses the button.
 
 **Alternate solution: Balance the ball on top of the button, keeping it pressed "forever".**
 
 ### Third Puzzle: Scale
 
-This one is the most complex. There is 3 constraints, one on each side and in the middle, to act as a scale.
+This one is the most complex. There are 3 constraints, one on each side and one in the middle, to act as a scale.
 
-The Output weight is randomized at start between 100kg and 1000kg. The input box weight is 100kg.
+The output weight is randomized at start, between 100 kg and 1000 kg. The input box weight is 100 kg.
 
-A pink box is 500kg, a yellow one is 200kg and a blue one is 50kg.
+A pink box is 500 kg, a yellow one is 200 kg, and a blue one is 50 kg.
 
-The puzzle is considered complete when the output weight and the input box are at the same level (nearly equal in Z axis)
+The puzzle is considered complete when the output weight and the input box are at the same level (nearly equal on the Z axis)
 
 To complete it, simply go little by little until you find the perfect balance.
 
