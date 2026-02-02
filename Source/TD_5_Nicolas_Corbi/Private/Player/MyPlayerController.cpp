@@ -151,4 +151,6 @@ void AMyPlayerController::OnQuitButtonClicked()
 void AMyPlayerController::OnGoalReached()
 {
 	DisableInput(this);
+
+	MyChara->GetMesh()->SetVisibility(false, true);
 }
