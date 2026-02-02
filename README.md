@@ -36,7 +36,7 @@ Simply roll a ball down the alley and wait before the door until the ball press 
 
 This one is the most complex. There is 3 constraints, one on each side and in the middle, to act as a scale.
 
-The Output weight is randomized at start between 100kg and 2000kg. The input box weight is 100kg.
+The Output weight is randomized at start between 100kg and 1000kg. The input box weight is 100kg.
 
 A pink box is 500kg, a yellow one is 200kg and a blue one is 50kg.
 
